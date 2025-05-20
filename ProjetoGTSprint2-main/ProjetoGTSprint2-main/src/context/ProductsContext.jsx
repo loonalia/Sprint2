@@ -8,15 +8,9 @@ const [produtos, setProdutos] = useState([])
 
 
 useEffect(()=> {
-  fetch('http://localhost:3000/produtos')
-    .then(res => {
-      if (!res.ok) {
-        throw new Error(`Erro ${res.status}: ${res.statusText}`)
-      }
-      return res.json()
-    })
+  axios.get('https://api-produtos-1-twyc.onrender.com/produtos')
     .then(data => 
-        setProdutos(data)
+        setProdutos(data.data)
     )
     .catch(err => 
       console.error("Erro ao buscar produtos:", err)
